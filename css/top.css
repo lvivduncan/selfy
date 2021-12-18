@@ -1,0 +1,38 @@
+#top
+{
+    background: var(--gray);
+    /* font-size: 16px; */
+}
+
+#top .wrapper
+{
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+#phone
+{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#phone a
+{
+    color: var(--white);
+    text-decoration: none;
+    display: block;
+    font-weight: 700;
+}
+
+#phone a:hover
+{
+    text-decoration: underline;
+}
+
+#lang
+{
+    color: var(--white);
+}

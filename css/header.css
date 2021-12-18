@@ -1,0 +1,85 @@
+
+/* //////////////////////////////////////////////////////
+// хедер з логотипом, меню, пошуком, кошиком, профілем //
+////////////////////////////////////////////////////// */
+
+#header .wrapper
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 90px;
+}
+
+#logo
+{
+
+}
+
+/* //////////////
+// select menu //
+////////////// */
+
+#nav
+{
+
+}
+
+#nav ul
+{
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+#nav li
+{
+    display: inline-block;
+}
+
+#nav li a
+{
+    color: var(--black);
+    text-decoration: none;
+}
+
+#nav li a:hover,
+#nav li a:focus,
+#nav li a.active
+{
+    color: var(--cyan);
+}
+
+/* пункт меню "акції" */
+#nav li a[href^="/action"]
+{
+    position: relative;
+}
+
+#nav li a[href^="/action"]::before
+{
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 5px;
+    height: 5px;
+    background: var(--cyan);
+    border-radius: 50%;
+}
+
+
+/* //////////////////////////
+// search, profile, basket //
+////////////////////////// */
+
+#header-extra
+{
+    display: flex;
+    gap: 30px;
+}
+
+#header-extra a
+{
+    text-decoration: none;
+}
