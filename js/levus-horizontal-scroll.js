@@ -1,81 +1,123 @@
-// 8-10-2020
-// 14-05-2021
-// 28-06-2021
+// 8-10-2020 -- 18-12-2021
 {
     // scroll
-    const scroll = document.querySelectorAll('.levus-horizontal-scroll');
+    const scrolls = document.querySelectorAll('.levus-horizontal-scroll')
+    
+    for(let i = 0; i<scrolls.length; i++){
+        
+        let interval 
 
-    scroll.forEach(item => {
-        const ul = item.querySelector('ul');
+        const scroll = scrolls[i]
+
+        const ul = scroll.querySelector('ul')
 
         // elements
-        let li = ul.querySelectorAll('li');
+        let li = ul.querySelectorAll('li')
 
         // if less than 4, cloned 
         if (li.length <= 4) {
 
             // cloned and append elements
-            li.forEach(element => ul.append(element.cloneNode(true)));
+            li.forEach(element => ul.append(element.cloneNode(true)))
 
             // new nodelist
-            li = item.querySelectorAll('li');
+            li = scroll.querySelectorAll('li')
         }
 
-        item.innerHTML += '<div class="levus-nav"><span class="left"></span><span class="right"></span></div>';
+        scroll.innerHTML += '<div class="levus-nav"><span class="left"></span><span class="right"></span></div>'
 
-        item.addEventListener('click', e => {
-            const ul = item.querySelector('ul');
-            if (e.target.className == 'left') {
+        scroll.addEventListener('click', event => {
+
+            const ul = scroll.querySelector('ul')
+
+            if (event.target.className == 'left') {
 
                 // move last element
-                const last = ul.lastElementChild;
-                ul.prepend(last);
+                const last = ul.lastElementChild
+                ul.prepend(last)
 
                 // destroy transition
-                ul.style.transition = 'none';
-                ul.classList.add('to-right');
+                ul.style.transition = 'none'
+                ul.classList.add('to-right')
+                
                 setTimeout(() => {
-                    ul.classList.remove('to-right');
-                    ul.style.transition = '.5s';
-                }, 50);
-            }
-        });
 
-        item.addEventListener('click', e => {
-            const ul = item.querySelector('ul');
-            if (e.target.className == 'right') {
+                    ul.classList.remove('to-right')
+                    ul.style.transition = '.5s'
+                }, 50)
+            }
+        })
+
+        scroll.addEventListener('click', event => {
+            const ul = scroll.querySelector('ul')
+
+            if (event.target.className == 'right') {
 
                 // move first element
-                const first = ul.firstElementChild;
-                ul.append(first);
+                const first = ul.firstElementChild
+                ul.append(first)
 
                 // destroy transition
-                ul.style.transition = 'none';
-                ul.classList.add('to-left');
-                setTimeout(() => {
-                    ul.classList.remove('to-left');
-                    ul.style.transition = '.5s';
-                }, 50);
-            }
-        });
+                ul.style.transition = 'none'
 
-        setInterval(() => {
-            const ul = item.querySelector('ul');
+                ul.classList.add('to-left')
+
+                setTimeout(() => {
+
+                    ul.classList.remove('to-left')
+                    ul.style.transition = '.5s'
+                }, 50)
+            }
+        })
+
+        interval = setInterval(() => {
+
+            const ul = scroll.querySelector('ul')
 
             // move first element
-            const first = ul.firstElementChild;
-            ul.append(first);
+            const first = ul.firstElementChild
+
+            ul.append(first)
 
             // destroy transition
-            ul.style.transition = 'none';
-            ul.classList.add('to-left');
+            ul.style.transition = 'none'
+
+            ul.classList.add('to-left')
 
             setTimeout(() => {
-                ul.classList.remove('to-left');
-                ul.style.transition = '.5s';
-            }, 50);
+
+                ul.classList.remove('to-left')
+                ul.style.transition = '.5s'
+            }, 50)
          
-        }, 3500);
+        }, 3500)
+
+        scroll.addEventListener('mouseover', () => {
+            
+            clearInterval(interval)
+        })
         
-    });
+        scroll.addEventListener('mouseout', () => {
+
+            interval = setInterval(() => {
+
+                const ul = scroll.querySelector('ul')
+
+                // move first element
+                const first = ul.firstElementChild
+                ul.append(first)
+
+                // destroy transition
+                ul.style.transition = 'none'
+                ul.classList.add('to-left')
+
+                setTimeout(() => {
+
+                    ul.classList.remove('to-left')
+                    ul.style.transition = '.5s'
+                }, 50)
+            
+            }, 3500)          
+        })
+    }
 }
